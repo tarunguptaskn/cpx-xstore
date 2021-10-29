@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.datamanager.client.legal.LegalEntityService
+path: EFB8EBC9A1B68EEF532BD444B25D9690.gwt.rpc

@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.datamanager.client.vendor.VendorService
+path: 6340003C241F59C8869E28A73DBC7C5C.gwt.rpc

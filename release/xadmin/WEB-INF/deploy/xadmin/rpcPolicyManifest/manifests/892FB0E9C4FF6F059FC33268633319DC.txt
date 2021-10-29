@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.support.replication.client.ReplService
+path: 0BEB2D3743429DF2CA99CCA303D760B3.gwt.rpc

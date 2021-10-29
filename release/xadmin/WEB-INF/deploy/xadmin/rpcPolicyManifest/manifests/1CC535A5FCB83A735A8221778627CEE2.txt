@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.datamanager.client.main.DataManagerService
+path: 3948787573CE0A3D1010001D8BE9819E.gwt.rpc

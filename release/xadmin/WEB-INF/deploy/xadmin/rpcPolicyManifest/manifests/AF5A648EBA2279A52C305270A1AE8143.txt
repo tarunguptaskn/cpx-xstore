@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.datamanager.client.merchhierarchy.MerchHierarchyService
+path: 4B8D6ED5E172A9E2466102E4D0EAC916.gwt.rpc

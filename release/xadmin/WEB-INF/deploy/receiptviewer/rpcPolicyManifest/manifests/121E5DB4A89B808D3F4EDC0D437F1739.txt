@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.util.gwt.service.InitializationService
+path: C301191E82606FEDF515D0B1F97DC6D6.gwt.rpc

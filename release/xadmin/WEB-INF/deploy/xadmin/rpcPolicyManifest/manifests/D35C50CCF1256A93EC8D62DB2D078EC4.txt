@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.datamanager.client.exchangerate.ExchangeRateService
+path: B33C4D155E3A7121C5E8916952362E54.gwt.rpc

@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.administration.client.settings.SettingsService
+path: B8553E6E117B4594C38AE0B99192F6FD.gwt.rpc

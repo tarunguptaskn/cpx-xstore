@@ -1,0 +1,2 @@
+serviceClass: com.micros_retail.xadmin.administration.client.sysmanager.job.JobService
+path: 7704BDA17BCB6E3B3E8A3D0CC63C2662.gwt.rpc

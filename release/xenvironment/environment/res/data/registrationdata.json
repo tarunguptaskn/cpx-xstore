@@ -1,0 +1,26 @@
+{
+  "map" : {
+    "1" : {
+      "@class" : "oracle.retail.xenvironment.registration.SystemInformation",
+      "active" : true,
+      "eftlinkDisabled" : true,
+      "envPort" : 50439,
+      "environmentVersion" : "20.0.1.0.40",
+      "fileServerPort" : 50440,
+      "fqdn" : "solxstbuild1",
+      "guiDisabled" : true,
+      "hostName" : "solxstbuild1",
+      "ip" : "127.0.0.1",
+      "lastUpdated" : "2021-06-29T21:41:08.030+00:00",
+      "messageID" : "9afa186e-be97-4c3a-89ab-a4aedf88e317",
+      "middlexDisabled" : true,
+      "regNum" : 1,
+      "role" : "lead",
+      "systemType" : "xfr",
+      "tsVersion" : "00000",
+      "xservicesDisabled" : true,
+      "xstoreMobileDisabled" : true,
+      "xstorePort" : 9090
+    }
+  }
+}
