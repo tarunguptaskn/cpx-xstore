@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<propmap basedirectory="@baseDir@">
+
+  <!--KsrAuto Store Close Configuration Start -->
+	    <prop name="ksr.auto.store.close"
+		location="version1/SysConfig.xml"
+		xpath="/SysConfig/Setting[@name='KsrSysConfig---OpenClose---AutoStoreClose']"
+		jarfile="lib/ksr-config.jar" /> 
+	
+	    <prop name="ksr.auto.store.close.time"
+		location="version1/SysConfig.xml"
+		xpath="/SysConfig/Setting[@name='KsrSysConfig---OpenClose---AutoStoreCloseTime']"
+		jarfile="lib/ksr-config.jar" />	
+		
+		<prop name="ksr.autoStoreClose.timeInterval"
+		location="version1/spring/ksr-workers.xml"
+		xpath="/beans/bean[@id='ksrAutomaticStoreClose']/property[@name='periodSeconds']/@value"
+		jarfile="lib/ksr-config.jar" />
+  <!--KsrAuto Store Close Configuration End -->
+
+</propmap>

@@ -1,0 +1,36 @@
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+DECLARE
+*
+ERROR at line 1:
+ORA-01741: illegal zero-length identifier 
+ORA-06512: at line 9 
+
+
+DECLARE
+*
+ERROR at line 1:
+ORA-01917: user or role 'DBAUSER' does not exist 
+ORA-06512: at line 7 
+
+
+SQL> 

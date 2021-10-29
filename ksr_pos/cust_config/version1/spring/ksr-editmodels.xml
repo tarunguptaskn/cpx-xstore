@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans profile="xstore" xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+  default-init-method="init">
+  
+  <!-- This file holds configurations for beans either are edit models or are related to/used by edit models. -->
+  
+  <!-- Address Service Beans -->
+  <bean id="addressServiceFactory" class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
+    <property name="serviceLocatorInterface" value="dtv.pos.framework.form.IAddressFieldServiceFactory" />
+    <property name="serviceMappings">
+      <props>
+        <prop key="SENDSALE">sendSaleAddressService</prop>
+        <prop key="CUSTOMER">customerAddressService</prop>
+        <prop key="EMPLOYEE">employeeAddressService</prop>
+        <prop key="GIFT_REGISTRY">giftRegistryAddressService</prop>
+        <prop key="SHIPPING">shippingAddressService</prop>
+        <prop key="DEFAULT">defaultAddressService</prop>
+        <prop key="TAX_EXEMPT">taxExemptAddressService</prop>
+        <prop key="HOME_OFFICE_CHECK">homeOfficeAddressService</prop>
+      </props>
+    </property>
+  </bean>
+  
+  <bean id="abstractAddressFieldService" class="dtv.pos.framework.form.AddressFieldService" abstract="true">
+    <constructor-arg ref="addressService" />
+    <constructor-arg>
+      <list>
+        <value>AUTO_POPULATE_FROM_POSTAL</value>
+        <value>RESTRICT_LISTS_BY_COUNTRY</value>
+      </list>
+    </constructor-arg>
+  </bean>
+  
+  <bean id="sendSaleAddressService" parent="abstractAddressFieldService" scope="prototype">
+    <constructor-arg value="SENDSALE" />
+  </bean>
+  
+  <bean id="customerAddressService" parent="abstractAddressFieldService" scope="prototype">
+    <constructor-arg value="CUSTOMER" />
+  </bean>
+  
+  <bean id="employeeAddressService" parent="abstractAddressFieldService" scope="prototype">      
+    <constructor-arg value="EMPLOYEE" />
+  </bean>
+  
+  <bean id="giftRegistryAddressService" parent="abstractAddressFieldService" scope="prototype">      
+    <constructor-arg value="GIFT_REGISTRY" />
+  </bean>
+  
+  <bean id="shippingAddressService" parent="abstractAddressFieldService" scope="prototype">      
+    <constructor-arg value="SHIPPING" />
+  </bean>
+  
+  <bean id="defaultAddressService" parent="abstractAddressFieldService" scope="prototype">
+    <constructor-arg value="DEFAULT" />
+  </bean>
+  
+  <bean id="taxExemptAddressService" parent="abstractAddressFieldService" scope="prototype">
+    <constructor-arg value="TAX_EXEMPT" />
+  </bean>
+  
+  <bean id="homeOfficeAddressService" parent="abstractAddressFieldService" scope="prototype">
+    <constructor-arg value="HOME_OFFICE_CHECK" />
+  </bean>
+  
+  <bean id="addressDataSource" class="dtv.util.address.datasource.FileAddressDataSource" />
+  
+  <bean id="addressService" class="dtv.util.address.AddressService" factory-method="getInternalInstance">
+    <property name="dataSource" ref="addressDataSource" />
+  </bean>
+  
+  <!-- Actual edit model beans -->
+  <bean id="editModelFieldChangeManager" class="dtv.pos.framework.form.EditModelFieldChangeManager" scope="prototype" />
+  
+  <bean id="listEditModelFactory" class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
+    <property name="serviceLocatorInterface" value="dtv.pos.framework.ui.model.ListEditModelFactory"/>
+    <property name="serviceMappings" ref="listEditModelServiceMappings" />
+  </bean>
+  
+  <bean id="listEditModelServiceMappings" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <property name="properties">
+      <props>
+        <prop key="CURRENT_TRANSACTION">currentTransactionListModel</prop>
+        <prop key="CUSTOMER_CURRENT_TRANSACTION">customerCurrentTransactionListModel</prop>
+        <prop key="CUSTOMER_MESSAGE_VIEW_LIST">customerMessageListModel</prop>
+        <prop key="RECEIVING_DOCUMENT">receivingDocumentListModel</prop>
+        <prop key="RECEIVING_CARTON">receivingCartonListModel</prop>
+        <prop key="SHIPPING_DOCUMENT">shippingDocumentListModel</prop>
+        <prop key="LAYAWAY">layawayListModel</prop>
+        <prop key="SPECIAL_ORDER">specialOrderListModel</prop>
+        <prop key="SEND_SALE">sendSaleListModel</prop>
+        <prop key="WORK_ORDER">workOrderListModel</prop>
+        <prop key="TILL_COUNT">tillCountListModel</prop>
+        <prop key="TILL_COUNT_UNIT">tillUnitCountListModel</prop>
+        <prop key="ITEM_LABEL_SELECTION">itemLabelListModel</prop>
+        <prop key="TIME_OFF">timeOffListModel</prop>
+        <prop key="INVENTORY_ADJUSTMENT">inventoryAdjustmentListModel</prop>
+        <prop key="INVENTORY_ITEM_TRANSFER">itemTransferListModel</prop>
+        <prop key="INVENTORY_MOVEMENT_PENDING">inventoryMovementPendingListModel</prop>
+        <prop key="TENDER_REPOSITORY">tenderRepositoryListModel</prop>
+        <prop key="GIFT_REGISTRY">giftRegistryListModel</prop>
+        <prop key="ORDER_LIST_MODEL">orderListModel</prop>
+        <prop key="INVENTORY_REPLENISHMENT">replenishmentListModel</prop>
+        <prop key="STORE_LAYOUT_MAINTENANCE_MODEL">storeLayoutListModel</prop>
+        <prop key="TAXFREE_RECEIPT">taxFreeReceiptSearchListModel</prop>
+        <prop key="SAFE_BAG_LIST">safeBagListEditModel</prop>
+      </props>
+    </property>
+  </bean>
+  
+  <bean id="currentTransactionListModel" class="dtv.pos.register.RetailTransactionListModel" scope="prototype" />
+  <bean id="customerCurrentTransactionListModel" class="dtv.pos.register.RetailTransactionListModel" scope="prototype" />
+  <bean id="customerMessageListModel" class="dtv.pos.customer.model.CustomerMessageListEditModel" scope="prototype" />
+  <bean id="receivingDocumentListModel" class="dtv.pos.inventory.receive.ReceivingDocumentListEditModel" scope="prototype" />
+  <bean id="receivingCartonListModel" class="dtv.pos.inventory.receive.ReceivingCartonListEditModel" scope="prototype" />
+  <bean id="shippingDocumentListModel" class="dtv.pos.inventory.ship.ShippingDocumentListEditModel" scope="prototype" />
+  <bean id="workOrderListModel" class="dtv.pos.workorder.common.WorkOrderAccountMaintModel" scope="prototype" />
+  <bean id="tillCountListModel" class="dtv.pos.till.count.TillCountModel" scope="prototype" />
+  <bean id="tillUnitCountListModel" class="dtv.pos.till.count.UnitCountListEditModel" scope="prototype" />
+  <bean id="itemLabelListModel" class="dtv.pos.reporting.label.LabelSelectionListModel" scope="prototype" />
+  <bean id="timeOffListModel" class="dtv.pos.scheduling.timeoff.TimeOffModel" scope="prototype" />
+  <bean id="inventoryAdjustmentListModel" class="dtv.pos.inventory.adjustment.InventoryAdjustmentListEditModel" scope="prototype" />
+  <bean id="itemTransferListModel" class="dtv.pos.inventory.movement.InventoryItemTransferModel" scope="prototype" />
+  <bean id="inventoryMovementPendingListModel" class="dtv.pos.inventory.movement.InventoryMovementPendingEditModel" scope="prototype" />
+  <bean id="tenderRepositoryListModel" class="dtv.pos.till.ChangeFloatModel" scope="prototype" />
+  <bean id="giftRegistryListModel" class="dtv.pos.giftregistry.GiftRegistryMaintModel" scope="prototype" />
+  <bean id="orderListModel" class="dtv.pos.order.OrderListEditModel" scope="prototype" />
+  <bean id="replenishmentListModel" class="dtv.pos.inventory.replenishment.ReplenishmentListEditModel" scope="prototype" />
+  <bean id="storeLayoutListModel" class="dtv.pos.inventory.storelayout.StoreLayoutMaintenanceModel" scope="prototype" />
+  <bean id="taxFreeReceiptSearchListModel" class="oracle.retail.xstore.countrypack.common.taxfree.model.TaxFreeReceiptListEditModel" scope="prototype" />
+  <bean id="safeBagListEditModel" class="dtv.pos.till.count.SafeBagListEditModel" scope="prototype" />
+  
+  <bean id="layawayListModel" class="dtv.pos.customer.account.AccountMaintEditModel" scope="prototype">
+    <constructor-arg>
+      <util:constant static-field="dtv.pos.customer.account.type.CustomerAccountType.LAYAWAY" />
+    </constructor-arg>
+  </bean>
+  
+  <bean id="specialOrderListModel" class="dtv.pos.customer.account.AccountMaintEditModel" scope="prototype">
+    <constructor-arg>
+      <util:constant static-field="dtv.pos.customer.account.type.CustomerAccountType.SPECIAL_ORDER" />
+    </constructor-arg>
+  </bean>
+  
+  <bean id="sendSaleListModel" class="dtv.pos.customer.account.AccountMaintEditModel" scope="prototype">
+    <constructor-arg>
+      <util:constant static-field="dtv.pos.customer.account.type.CustomerAccountType.SEND_SALE" />
+    </constructor-arg>
+  </bean>
+  
+  <!-- Sort actions for lists represented in list models -->
+  <bean id="sortActionComparatorFactory" class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
+    <property name="serviceLocatorInterface" value="dtv.pos.iframework.action.SortActionComparatorFactory" />
+  </bean>
+  
+  <bean id="taskStartTimeComparator" class="dtv.pos.tasks.TaskStartTimeComparator" scope="prototype" />
+  <bean id="taskPriorityComparator" class="dtv.pos.tasks.TaskPriorityComparator" scope="prototype" />
+  <bean id="taskStartDateComparator" class="dtv.pos.tasks.TaskDateComparator" scope="prototype" />
+  <bean id="taskDurationComparator" class="dtv.pos.tasks.TaskDurationComparator" scope="prototype" />
+  <bean id="taskTypeComparator" class="dtv.pos.tasks.TaskActivityComparator" scope="prototype" />
+  <bean id="taskTitleComparator" class="dtv.pos.tasks.TaskTitleComparator" scope="prototype" />
+  <bean id="taskCustomerComparator" class="dtv.pos.tasks.TaskCustomerComparator" scope="prototype" />
+  <bean id="taskStatusComparator" class="dtv.pos.tasks.TaskStatusComparator" scope="prototype" />
+  <bean id="taskAssociateComparator" class="dtv.pos.tasks.TaskAssociateComparator" scope="prototype" />
+  
+  <bean id="itemDrillDownGrossComparator" class="dtv.pos.reporting.drilldown.model.ItemDrillDownGrossComparator" scope="prototype" />
+  <bean id="itemDrillDownNetsComparator" class="dtv.pos.reporting.drilldown.model.ItemDrillDownNetsComparator" scope="prototype" />
+  <bean id="itemDrillDownReturnsComparator" class="dtv.pos.reporting.drilldown.model.ItemDrillDownReturnsComparator" scope="prototype" />
+  <bean id="itemDrillDownDescriptionsComparator" class="dtv.pos.reporting.drilldown.model.ItemDrillDownDescriptionsComparator" scope="prototype" />
+  <bean id="itemDrillDownTypesComparator" class="dtv.pos.reporting.drilldown.model.ItemDrillDownTypesComparator" scope="prototype" />
+  <bean id="itemDrillDownDiscountsComparator" class="dtv.pos.reporting.drilldown.model.ItemDrillDownDiscountsComparator" scope="prototype" />
+  
+  <!-- Field validators for edit models -->
+  <bean id="custMaintModelFieldValidatorFactory" class="dtv.pos.framework.form.validators.DefaultEditModelFieldValidatorFactory" scope="prototype">
+    <property name="parameters" ref="custMaintModelFieldValidators" />
+  </bean>
+  <bean id="custMaintModelFieldValidators" class="org.springframework.beans.factory.config.MapFactoryBean" scope="prototype">
+    <property name="sourceMap">
+      <map>
+        <entry key="emailAddress" value-ref="emailAddressFieldValidator" />
+        <entry key="contactPref" value-ref="contactPrefFieldValidator" />
+        <entry key="nationalTaxId" value-ref="taxCodeFieldValidator" />
+        <entry key="personalTaxId" value-ref="fiscalCodeFieldValidator" />
+        <entry key="weChatId" value-ref="weChatIdFieldValidator" />
+        
+       	<!-- Custom validation --> 
+        <entry key="telephone1" value-ref="ksrCustMaintFieldValidator" />
+        <entry key="firstName" value-ref="ksrCustMaintFieldValidator" />
+        <entry key="middleName" value-ref="ksrCustMaintFieldValidator" />
+        <entry key="lastName" value-ref="ksrCustMaintFieldValidator" />
+        <entry key="address1" value-ref="ksrCustMaintFieldValidator" />
+        <entry key="address2" value-ref="ksrCustMaintFieldValidator" />
+		<entry key="city" value-ref="ksrCustMaintFieldValidator" />
+		<entry key="birthDate" value-ref="ksrCustMaintFieldValidator" />
+		<entry key="idExpirationDate" value-ref="ksrCustMaintFieldValidator" /> 
+		<entry key="postalCode" value-ref="ksrCustMaintFieldValidator" />    
+      </map>
+    </property>  
+  </bean>  
+    
+  <bean id="emailAddressFieldValidator" class="dtv.pos.framework.form.validators.EmailAddressFieldValidator" scope="prototype" />
+  <bean id="contactPrefFieldValidator" class="dtv.pos.framework.form.validators.ContactPrefFieldValidator" scope="prototype" />
+  <bean id="weChatIdFieldValidator" class="oracle.retail.xstore.countrypack.cn.form.validators.WeChatIdFieldValidator" scope="prototype"/>
+  <bean id="ksrCustMaintFieldValidator" class="ksr.pos.validators.KsrCustMaintFieldValidator" scope="prototype"/>
+  <!-- <bean id="defaultFieldValidator" class="dtv.pos.framework.form.validators.DefaultEditModelFieldValidator" scope="prototype" /> -->
+  
+  <bean id="shippingFormModelFieldValidatorFactory" class="dtv.pos.framework.form.validators.DefaultEditModelFieldValidatorFactory" scope="prototype">
+    <property name="parameters" ref="shippingFormModelFieldValidators" />    
+  </bean>
+  <bean id="shippingFormModelFieldValidators" class="org.springframework.beans.factory.config.MapFactoryBean" scope="prototype">
+    <property name="sourceMap">
+      <map>
+        <entry key="postalCode" value-ref="shippingPostalCodeFieldValidator" />
+        <entry key="country" value-ref="shippingCountryFieldValidator" />
+        <entry key="state" value-ref="shippingStateFieldValidator" />
+      </map>
+    </property>  
+  </bean>  
+  <bean id="shippingPostalCodeFieldValidator" class="dtv.pos.sendsale.validators.ShippingPostalCodeValidator" scope="prototype" />
+  <bean id="shippingCountryFieldValidator" class="oracle.retail.xstore.countrypack.common.validators.ShippingCountryFieldValidator" scope="prototype">
+    <property name="enabled" value="false" />
+  </bean>
+  <bean id="shippingStateFieldValidator" class="oracle.retail.xstore.countrypack.common.validators.ShippingStateFieldValidator" scope="prototype">
+    <property name="enabled" value="false" />
+  </bean>
+  
+  <bean id="editSsnModelFieldValidatorFactory" class="dtv.pos.framework.form.validators.DefaultEditModelFieldValidatorFactory" scope="prototype">
+    <property name="parameters" ref="editSsnModelFieldValidators" />
+  </bean>
+  <bean id="editSsnModelFieldValidators" class="org.springframework.beans.factory.config.MapFactoryBean" scope="prototype">
+    <property name="sourceMap">
+      <map>
+        <entry key="ssn" value-ref="ssnFieldValidator" />
+      </map>
+    </property>  
+  </bean>  
+  <bean id="ssnFieldValidator" class="dtv.pos.employee.validators.SsnFieldValidator" scope="prototype" />
+  
+  <!-- Form/field selection beans -->
+  <bean id="fieldHandlerRegistry" class="dtv.pos.framework.form.FieldHandlerRegistry" />
+
+  <bean id="fieldHandlerFactory" class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean">
+    <property name="serviceLocatorInterface" value="dtv.pos.framework.form.FieldHandlerFactory" />
+    <property name="serviceMappings">
+      <props>
+        <prop key="default">defaultFieldHandler</prop>
+        <prop key="AUTH_MORE_INFO">moreAuthInfoFieldHandler</prop>
+        <prop key="INVENTORY_COUNT_SHEET">inventoryCountFieldHandler</prop>
+        <prop key="PAYROLL_SUMMARY">tableCellFieldHandler</prop>
+        <prop key="SCHED_SUMMARY">tableCellFieldHandler</prop>
+        <prop key="TILL_COUNT_SUMMARY">countSummaryFieldHandler</prop>
+      </props>
+    </property>
+  </bean>
+
+  <!-- Prototype field handler beans -->
+  <bean id="defaultFieldHandler" class="dtv.pos.framework.form.DefaultFieldHandler" scope="prototype">
+    <property name="methodRegistry">
+      <map>
+        <entry key="dtv.util.ICode" value="getCode" />
+        <entry key="dtv.pos.employee.SecurityGroupWrapper" value="getGroupId" />
+        <entry key="dtv.xst.dao.crm.impl.CustomerAffiliationModel" value="getCustomerGroupId" />
+        <entry key="dtv.xst.dao.inv.impl.InventoryLocationBucketModel" value="getBucketId" />
+        <entry key="dtv.xst.dao.inv.impl.InventoryLocationModel" value="getName" />
+        <entry key="dtv.xst.dao.inv.impl.InventoryValidDestinationsModel" value="getDestinationId" />
+        <entry key="dtv.xst.dao.sec.impl.GroupModel" value="getGroupId" />
+        <entry key="dtv.pos.till.TillDetailsResult" value="getTenderRepositoryId" />
+      </map>
+    </property>
+  </bean>
+
+  <bean id="countSummaryFieldHandler" class="dtv.pos.till.count.CountSummaryFieldHandler" scope="prototype" />
+  <bean id="inventoryCountFieldHandler" class="dtv.pos.inventory.count.InventoryCountSheetHandler" scope="prototype" />
+  <bean id="moreAuthInfoFieldHandler" class="dtv.pos.tender.MoreAuthInfoFieldHandler" scope="prototype" />
+  <bean id="tableCellFieldHandler" class="dtv.pos.framework.ui.TableCellFieldHandler" scope="prototype" />
+  
+  <!-- Field mutators for edit models -->
+  <bean id="custMaintModelSetFieldFilterFactory" class="dtv.pos.framework.form.DefaultEditModelSetFieldFilterFactory" scope="prototype" >
+    <property name="parameters">
+      <map>
+      	<entry key="customerGroups" value-ref="custMaintModelCustGroupsSetFieldFilter" />
+        <entry key="organizationName" value-ref="organizationNameSetFieldFilter" />
+        <entry key="birthDate" value-ref="birthDateSetFieldFilter" />
+      </map>
+    </property>
+  </bean>
+  
+	<bean id="custMaintModelCustGroupsSetFieldFilter" class="dtv.pos.shared.mutators.CustMaintModelCustGroupsSetFieldFilter" scope="prototype" />
+	<bean id="birthDateSetFieldFilter" class="dtv.pos.shared.mutators.BirthDateSetFieldFilter" scope="prototype" />
+  <bean id="organizationNameSetFieldFilter" class="dtv.pos.shared.mutators.SimpleDependentSetFieldFilter" scope="prototype">
+  	<property name="dependentField" value="organizationTypeCode"/>
+  </bean>
+  
+  <bean id="emplMaintModelSetFieldFilterFactory" class="dtv.pos.framework.form.DefaultEditModelSetFieldFilterFactory" scope="prototype" >
+    <property name="parameters">
+      <map>
+        <entry key="securityGroups" value-ref="securityGroupsSetFieldFilter"/>
+        <entry key="customerGroups" value-ref="emplMaintModelCustGroupsSetFieldFilter" />
+        <entry key="employeeStatusCode" value-ref="employeeStatusCodeSetFieldFilter" />
+      </map>
+    </property>
+  </bean>
+  
+  <bean id="securityGroupsSetFieldFilter" class="dtv.pos.shared.mutators.SecurityGroupsSetFieldFilter" scope="prototype" />
+  <bean id="emplMaintModelCustGroupsSetFieldFilter" class="dtv.pos.shared.mutators.EmplMaintModelCustGroupsSetFieldFilter" scope="prototype" />
+  <bean id="employeeStatusCodeSetFieldFilter" class="dtv.pos.shared.mutators.ValueDependentSetFieldFilter" scope="prototype">
+    <property name="dependentField" value="terminatedDate"/>
+    <property name="dependencyProps">
+      <props>
+        <prop key="code">T</prop>
+        <prop key="matchState">1..1</prop>
+        <prop key="noMatchState">0..0</prop>
+      </props>
+    </property>
+  </bean>
+  
+</beans>

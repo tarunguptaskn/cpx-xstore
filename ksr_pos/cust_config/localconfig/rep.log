@@ -1,0 +1,28 @@
+
+Session altered.
+
+old  30:       TABLESPACE &dbIndexTableSpace.
+new  30:       TABLESPACE KSR_repqueue_20_102_INDEX
+old  32:       TABLESPACE &dbDataTableSpace.'
+new  32:       TABLESPACE KSR_repqueue_20_102_DATA'
+
+PL/SQL procedure successfully completed.
+
+old  31:     TABLESPACE &dbIndexTableSpace.
+new  31:     TABLESPACE KSR_repqueue_20_102_INDEX
+old  33:     TABLESPACE &dbDataTableSpace.'
+new  33:     TABLESPACE KSR_repqueue_20_102_DATA'
+
+PL/SQL procedure successfully completed.
+
+old  29:     TABLESPACE &dbIndexTableSpace.
+new  29:     TABLESPACE KSR_repqueue_20_102_INDEX
+old  31:     TABLESPACE &dbDataTableSpace.'
+new  31:     TABLESPACE KSR_repqueue_20_102_DATA'
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+SQL> 

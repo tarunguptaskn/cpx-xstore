@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActionSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://micros.com/xstore/config/action" xsi:noNamespaceSchemaLocation="ActionConfig.xsd">
+
+	<!-- Route Bill Patient to Cash tender flow -->
+	<Action name="SALE::TENDER_BILL_PATIENT" category="Register" keywords="sale_tender" text="_tenderBillPatient" chainKey="TENDER_LOCAL_CURRENCY">
+		<IconGroup icon="_imageTenderCash" rollIcon="_imageTenderCashRoll" pressIcon="_imageTenderCashPress" disabledIcon="_imageTenderCashDisabled" />
+		<VisibilityRule class="dtv.pos.shared.visibilityrules.TenderEnabledCheck">
+			<Parameter name="tender" value="LOCAL_CURRENCY" />
+		</VisibilityRule>
+		<VisibilityRule
+			class="dtv.pos.shared.visibilityrules.EffectiveTenderAccCheck">
+			<Parameter name="tender" value="LOCAL_CURRENCY" />
+		</VisibilityRule>
+		<VisibilityRule
+			class="dtv.pos.shared.visibilityrules.AvailableLayawayTenderAccCheck">
+			<Parameter name="tender" value="LOCAL_CURRENCY" />
+		</VisibilityRule>
+		<VisibilityRule class="dtv.pos.register.sale.AmountDueVisibilityRule" />
+	</Action>
+	
+	<!-- Route Bill Patient to Cash tender flow -->
+	<Action name="SALE::TENDER_BILL_THIRDPARTY" category="Register" keywords="sale_tender" text="_tenderBillThirdParty" chainKey="TENDER_LOCAL_CURRENCY">
+		<IconGroup icon="_imageTenderCash" rollIcon="_imageTenderCashRoll" pressIcon="_imageTenderCashPress" disabledIcon="_imageTenderCashDisabled" />
+		<VisibilityRule class="dtv.pos.shared.visibilityrules.TenderEnabledCheck">
+			<Parameter name="tender" value="LOCAL_CURRENCY" />
+		</VisibilityRule>
+		<VisibilityRule
+			class="dtv.pos.shared.visibilityrules.EffectiveTenderAccCheck">
+			<Parameter name="tender" value="LOCAL_CURRENCY" />
+		</VisibilityRule>
+		<VisibilityRule
+			class="dtv.pos.shared.visibilityrules.AvailableLayawayTenderAccCheck">
+			<Parameter name="tender" value="LOCAL_CURRENCY" />
+		</VisibilityRule>
+		<VisibilityRule
+			class="dtv.pos.register.sale.AmountDueVisibilityRule" />
+	</Action>
+
+	<Action name="SALE::TENDER_CREDIT_CARD" category="Register" keywords="sale_tender" text="_menutext33" chainKey="TENDER_EFTL_CREDIT_CARD">
+	    <IconGroup icon="_imageTenderCredit" rollIcon="_imageTenderCreditRoll" pressIcon="_imageTenderCreditPress" disabledIcon="_imageTenderCreditDisabled" />
+	    <VisibilityRule class="dtv.pos.shared.visibilityrules.TenderEnabledCheck" >
+	      <Parameter name="tender" value="CREDIT_CARD" />
+	    </VisibilityRule>
+	    <VisibilityRule class="dtv.pos.shared.visibilityrules.EffectiveTenderAccCheck" >
+	      <Parameter name="tender" value="CREDIT_CARD" />
+	    </VisibilityRule>
+	    <!-- <VisibilityRule class="dtv.pos.shared.visibilityrules.AvailableLayawayTenderAccCheck" >
+	      <Parameter name="tender" value="CREDIT_CARD" />
+	    </VisibilityRule> -->
+	    <VisibilityRule class="dtv.pos.register.sale.AmountDueVisibilityRule" />
+  	</Action>
+  	 <Action name="SALE::TENDER_COUPON" category="Register" keywords="sale_tender" text="_menutext47" chainKey="ADD_BLIND_COUPON_TENDER">
+	    <IconGroup icon="_imageTenderCoupon" rollIcon="_imageTenderCouponRoll" pressIcon="_imageTenderCouponPress" disabledIcon="_imageTenderCouponDisabled" />
+	    <VisibilityRule class="dtv.pos.shared.visibilityrules.TenderEnabledCheck" >
+	      <Parameter name="tender" value="COUPON" />
+	    </VisibilityRule>
+	    <VisibilityRule class="dtv.pos.shared.visibilityrules.EffectiveTenderAccCheck" >
+	      <Parameter name="tender" value="COUPON" />
+	    </VisibilityRule>
+	    <!-- <VisibilityRule class="dtv.pos.shared.visibilityrules.AvailableLayawayTenderAccCheck" >
+	      <Parameter name="tender" value="COUPON" />
+	    </VisibilityRule> -->
+	    <VisibilityRule class="dtv.pos.register.sale.AmountDueVisibilityRule" />
+  </Action>
+  <Action name="SALE::TENDER_HOUSE_ACCOUNT" category="Register" keywords="sale_tender" text="_menutext36" chainKey="TENDER_HOUSE_ACCOUNT">
+    <IconGroup icon="_imageTenderHouseAccount" rollIcon="_imageTenderHouseAccountRoll" pressIcon="_imageTenderHouseAccountPress" disabledIcon="_imageTenderHouseAccountDisabled" />
+        <VisibilityRule class="dtv.pos.shared.visibilityrules.TenderEnabledCheck" >
+      <Parameter name="tender" value="HOUSE_ACCOUNT" />
+    </VisibilityRule>
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.EffectiveTenderAccCheck" >
+      <Parameter name="tender" value="HOUSE_ACCOUNT" />
+    </VisibilityRule>
+    <!-- <VisibilityRule class="dtv.pos.shared.visibilityrules.AvailableLayawayTenderAccCheck" >
+      <Parameter name="tender" value="HOUSE_ACCOUNT" />
+    </VisibilityRule> -->
+    <VisibilityRule class="dtv.pos.register.sale.AmountDueVisibilityRule" />
+  </Action>
+  
+  <Action name="RETURN::TENDER_HOUSE_ACCOUNT" category="Return" keywords="return_tender" text="_menutext36" chainKey="REFUND_HOUSE_ACCOUNT">
+    <IconGroup icon="_imageTenderHouseAccount" rollIcon="_imageTenderHouseAccountRoll" pressIcon="_imageTenderHouseAccountPress" disabledIcon="_imageTenderHouseAccountDisabled" />
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.RefundTenderCheck" >
+      <Parameter name="tender" value="HOUSE_ACCOUNT" />
+    </VisibilityRule>
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.EffectiveTenderAccCheck" >
+      <Parameter name="tender" value="HOUSE_ACCOUNT" />
+    </VisibilityRule>
+    <VisibilityRule class="dtv.pos.register.sale.RefundDueVisibilityRule" />
+  </Action>
+  <Action name="RETURN::TENDER_CREDIT_CARD" category="Return" keywords="return_tender" text="_credittender" chainKey="REFUND_EFTL_CREDIT_CARD">
+    <IconGroup icon="_imageTenderCredit" rollIcon="_imageTenderCreditRoll" pressIcon="_imageTenderCreditPress" disabledIcon="_imageTenderCreditDisabled" />
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.TenderEnabledCheck">
+      <Parameter name="tender" value="CREDIT_CARD" />
+    </VisibilityRule>
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.RefundTenderCheck">
+      <Parameter name="tender" value="CREDIT_CARD" />
+    </VisibilityRule>
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.RefundBalanceTenderAccessCheck">
+      <Parameter name="privilege" value="REFUND_TENDER_BALANCE" />
+      <Parameter name="tender" value="CREDIT_CARD" />
+    </VisibilityRule>
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.EffectiveTenderAccCheck">
+      <Parameter name="tender" value="CREDIT_CARD" />
+    </VisibilityRule>
+    <VisibilityRule class="dtv.pos.register.sale.RefundDueVisibilityRule" />
+    <VisibilityRule class="dtv.pos.shared.visibilityrules.TenderOnReturnRule" />
+  </Action>
+</ActionSet>

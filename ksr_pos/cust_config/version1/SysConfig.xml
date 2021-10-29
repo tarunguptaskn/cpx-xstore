@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SysConfig xmlns="http://micros.com/xstore/config/settings">
+    <Setting name="Email---DefaultMailHost">localhost</Setting>
+    <Setting name="Email---DefaultMailPort">25</Setting>
+    <Setting name="Email---DefaultSender">noreply@xstore.com</Setting>
+    <Setting name="Email---Receipt---From">_receiptEmailFrom</Setting>
+    <Setting name="Email---SmtpDebug">false</Setting>
+    <Setting name="Email---UseSmtpAuth">false</Setting>
+    <Setting name="Location---OvertimeRuleType">WEEKLYOVER40</Setting>
+    <Setting name="SendSale---SendTaxType">DESTINATION</Setting>
+    <Setting name="CommissionedAssociates---PromptForCommissionedAssociates">false</Setting>
+    <Setting name="TillAccountability---MinimumCashInTill">50</Setting>
+    <Setting name="TillAccountability---SuggestedAfterCashPickUpAmtUponOverMax">200</Setting>
+    <Setting name="TillAccountability---CountSummaryViewTypeMidDay">DETAILED</Setting>
+    <Setting name="TillAccountability---CountSummaryViewTypeStartCount">DETAILED</Setting>
+    <Setting name="TillAccountability---TillPickupMethod">TOTAL_SHORT</Setting>
+    <Setting name="TillAccountability---CountSummaryViewTypeReconcile">DETAILED</Setting>
+    <Setting name="TillAccountability---RecountCloseCountDiscrepancyOverThreshold">true</Setting>
+    <Setting name="OnScreenKeyboard---KeyClickEnabled">false</Setting>
+    <Setting name="TrainingMode---TrainingModeRestrictEnterExitPrinting">false</Setting>
+    <Setting name="LoginSecurity---AccountLockout---Retries">7</Setting>
+	<Setting name="AutoLogout---Enabled">true</Setting>
+	<Setting name="AutoLogout---WaitSeconds">180</Setting>
+ 	<Setting name="PrintCanceledTransactions">true</Setting>
+ 	<Setting name="Tax---DisableChangeTaxAmount">false</Setting>
+ 	<Setting name="ItemReturn---AlwaysPromptForItemPriceUponBlindReturn">false</Setting>
+ 	<Setting name="ItemReturn---AlwaysPromptForItemPriceUponUnverifiedReturn">false</Setting>
+ 	<Setting name="ItemReturn---ProRatedTaxOnReturnsDisabled">true</Setting>
+ 	<Setting name="ItemReturn---RestockingFee---PromptApplyRestockingFeeMessage">false</Setting>
+ 	<Setting name="ItemReturn---MaximumReturnItemPrice">999999</Setting>
+ 	<Setting name="ItemReturn---MaxDaysAfterPurchase">30</Setting>
+ 	<Setting name="LoginSecurity---ChallengeQuestionsEnabled">false</Setting>
+ 	<Setting name="OpenClose---CaptureUserMsg">false</Setting>
+ 	<Setting name="OpenClose---DisplayUserCapturedMsg">false</Setting>
+ 	<Setting name="RefreshPromotions---CheckingForNewCachedPromotions">true</Setting>
+    <Setting name="RefreshPromotions---TimeIntervalForCheckingForNewCachedPromotions">15</Setting>
+    <Setting name="PromptForCustomerOnLogin">false</Setting>
+    <Setting name="SaleEndingChain">REGISTER_LOGIN</Setting>
+    
+    <Setting name="OpenClose---PromptWishToCloseQuestion">false</Setting>
+	<Setting name="OpenClose---PromptWishToOpenQuestion">false</Setting>
+	<Setting name="OpenClose---RollingClose---AutoOpenAfterClose">true</Setting>
+	<Setting name="CommissionedAssociates---PromptForCommissionedAssociates">false</Setting>
+	<Setting name="CreditDebitTender---ExportHashedAccountNumber">true</Setting>
+	<Setting name="OnScreenKeyboard---KeyClickEnabled">false</Setting>
+	<Setting name="TrainingMode---TrainingModeRestrictReceiptPrinting">false</Setting>
+	<Setting name="AttachedItems---EnableAttachedItems">false</Setting>
+	<Setting name="RefreshPromotions---CheckingForNewCachedPromotions">true</Setting>
+	<Setting name="RefreshPromotions---TimeIntervalForCheckingForNewCachedPromotions">15</Setting>
+	
+	<Setting name="ItemSale---NotifyForItemNotOnFile">false</Setting> 
+    <Setting name="ItemReturn---CustomerRecordRequired">false</Setting>
+    <!--Start Ksr Auto Store Close -->
+    <Setting name="KsrSysConfig---OpenClose---AutoStoreClose">true</Setting>
+    <Setting name="KsrSysConfig---OpenClose---AutoStoreCloseTime">01:20:00</Setting>
+    <!--End Ksr Auto Store Close -->
+    <!-- Timeout is in milliseconds. 1000 = 1 sec, 30000 = 30 sec -->
+    <Setting name="KsrConfig---PseWeb---WMConnectionTimeOut">3000</Setting>
+    <Setting name="KsrConfig---PseWeb---WMConnectionURL">http://localhost:8080/ksr/getmsg</Setting>
+</SysConfig>
+

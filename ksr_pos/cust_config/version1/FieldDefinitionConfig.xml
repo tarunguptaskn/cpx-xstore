@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://micros.com/xstore/config/form/field" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FormFieldConfig.xsd">
+
+<Field name="address1" type="Text" resource="address1" dataFieldRef="Address"/>
+<Field name="address1Label" type="Label" text="_commonAddress1" />  
+<Field name="address2Label" type="Label" text="_commonAddress2" />
+<Field name="address2" type="Text" resource="address2" dataFieldRef="Address" />
+
+<Field name="firstNameShortLabel" type="Label" text="_formNameLabel" />
+<Field name="firstName" type="Text" resource="firstName" dataFieldRef="Name" />
+
+<Field name="middleName" type="Text" resource="middleName" dataFieldRef="Name" />
+  
+<Field name="middleNameLabel" type="Label" text="_formMiddleNameLabel" />
+<Field name="lastNameShortLabel" type="Label" text="_formLastNameLabel" />
+<Field name="lastName" type="Text" resource="lastName" dataFieldRef="Name" />
+
+<Field name="dateOfBirthLabel" type="Label" text="_birthDateLabel" />
+<Field name="dateOfBirth" type="Text" resource="birthDate" dataFieldRef="BirthDate" />
+
+<Field name="suffixLabel" type="Label" text="_suffix" />
+<Field name="suffix" type="ComboBox" resource="suffix" />
+
+<Field name="postalCodeLabel" type="Label" text="_postalCodeLabel" />
+<Field name="postalCode" type="Text" resource="postalCode" dataFieldRef="PostalCode" />
+
+<Field name="city" type="Text" resource="city" dataFieldRef="Address" />  
+<Field name="cityLabel" type="Label" text="_cityLabel" />
+
+<Field name="stateLabel" type="Label" text="_custStateLabel" />
+<Field name="stateCustMaint" type="ComboBox" resource="state" />
+
+<Field name="telephone1Label" type="Label" text="_custPhone1Label" />
+<Field name="telephone1" type="Text" resource="telephone1" />
+
+<Field name="relToPatientLabel" type="Label" text="_relToPatientLabel" />
+<Field name="relToPatient" type="ComboBox" resource="relToPatient" />
+
+
+<!--  -->
+<Field name="custIdNumber" type="Text" resource="custIdNumber"  />  
+<Field name="custIdNumberLabel" type="Label" text="_custIdNumberLabel" />
+
+<Field name="custIdType" type="ComboBox" resource="custIdType"  />  
+<Field name="custIdTypeLabel" type="Label" text="_custIdTypeLabel" />
+
+<Field name="custIdCountry" type="ComboBox" resource="custIdCountry" />  
+<Field name="custIdCountryLabel" type="Label" text="_custIdCountryLabel" />
+
+<Field name="issuingAgency" type="ComboBox" resource="issuingAgency"  />  
+<Field name="issuingAgencyLabel" type="Label" text="_issuingAgencyLabel" />
+
+<Field name="idExpirationDate" type="Text" resource="idExpirationDate" dataFieldRef="BirthDate"/>  
+<Field name="idExpirationDateLabel" type="Label" text="_idExpirationDateLabel" />
+
+
+</FieldSet>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MenuConfig.xsd" xmlns="http://micros.com/xstore/config/menu">
+
+  <MenuItem name="RETAIL::EXTENDED_TRANS" text="_accountOptionsMenuText" sticky="false" category="Retail" keywords="universal,sale,register_extended,register_all">
+    <SubMenu ref="ORDER::MENU" />
+
+    <SubMenu actionRef="SEND_SALE::MENU.OPTIONS">
+      <MenuOption ref="SEND_SALE" />
+      <MenuOption ref="SEND_SALE::EDIT" />
+    </SubMenu>
+
+    <!--MenuOption ref="LAYAWAY" /-->
+
+    <MenuOption>
+      <Action ref="SPECIAL_ORDER" />
+      <Action ref="SPECIAL_ORDER::MINIMAL" />
+    </MenuOption>
+
+    <!-- MenuOption ref="WORK_ORDER" /-->
+
+    <!--SubMenu text="_warrantyMenuAction">
+      <MenuOption ref="SALE::ADD_WARRANTY" />
+      <MenuOption ref="RETAIL::CHANGE_WARRANTY_CUSTOMER" />
+    </SubMenu-->
+    
+    <!-- MenuOption ref="PRESALE" /-->
+    <!-- MenuOption ref="ONHOLD" /-->    
+    <MenuOption ref="SALE::XCOMMERCE" />
+  </MenuItem>
+  
+    <MenuItem name="SALE::TENDER_OPTIONS" text="_menuSaleTender" displayType="LIST" category="Tender" keywords="sale_tender">
+    <MenuOption ref="SALE::TENDER_LOCAL_CURRENCY" />
+    <MenuOption ref="SALE::TENDER_CREDIT_CARD" />
+  	<!-- <MenuOption ref="SALE::TENDER_EWALLET" /> -->
+    <MenuOption ref="SALE::TENDER_MANUAL_CREDIT" />
+    <MenuOption ref="SALE::TENDER_MANUAL_DEBIT" />
+    <MenuOption ref="SALE::TENDER_CHECK" />
+    <MenuOption ref="SALE::TENDER_HOUSE_ACCOUNT" />
+    
+   <!-- <MenuOption ref="SALE::TENDER_BILL_PATIENT" />
+	<MenuOption ref="SALE::TENDER_BILL_THIRDPARTY" />-->
+    <!-- MenuOption ref="SALE::TENDER_GIFT_CARD" /-->
+    <SubMenu actionRef="SALE::MENU.TENDER_CNP">
+      <MenuOption ref="SALE::TENDER_CUSTOMER_NOT_PRESENT_CREDIT_CARD" />
+      <MenuOption ref="SALE::TENDER_CUSTOMER_SAVED_PAYMENT_CARD" />
+    </SubMenu>
+    <!--MenuOption ref="SALE::TENDER_GIFT_CERTIFICATE" />
+    <MenuOption ref="SALE::TENDER_MALL_CERTIFICATE" />
+    <MenuOption ref="SALE::TENDER_STORE_CREDIT" /-->
+    <MenuOption ref="SALE::TENDER_STORE_CREDIT_CARD" />
+    <!--MenuOption ref="SALE::TENDER_TRAVELERS_CHECK" />
+    <MenuOption ref="SALE::TENDER_FOREIGN_CURRENCY" />
+    <MenuOption ref="SALE::TENDER_MISCELLANEOUS" />-->
+<!--     <MenuOption ref="SALE::TENDER_CARD_ON_FILE" />
+	<MenuOption ref="SALE::TENDER_BILL_PATIENT" />
+	<MenuOption ref="SALE::TENDER_BILL_THIRD_PARTY" /> -->
+    
+    <!-- <MenuOption ref="SALE::TENDER_HOUSE_ACCOUNT" /> -->
+    <MenuOption ref="SALE::TENDER_COUPON" />
+    
+    <!--  MenuOption ref="SALE::TENDER_ROOM_CHARGE" />-->
+
+    <SubMenu actionRef="SALE::MENU.MODIFY_TENDER" keywords="isLineItemsSubMenuXstoreM">
+      <MenuOption ref="SALE::CHANGE_TENDER_AMOUNT" />
+      <MenuOption ref="SALE::VOID_TENDER" />
+    </SubMenu>
+
+    <MenuOption ref="SALE::BACK_TO_SALE" />
+    <MenuOption ref="RETAIL::CHECK_SALE_COMPLETE" />
+    
+  </MenuItem>
+  
+    <MenuItem name="RETURN::TENDER_OPTIONS" text="_menuReturnTender" displayType="LIST" category="Tender" keywords="return_tender">
+    <MenuOption ref="RETURN::TENDER_LOCAL_CURRENCY" />
+    <MenuOption ref="RETURN::TENDER_CREDIT_CARD" />
+    <MenuOption ref="RETURN::TENDER_STORE_CREDIT" />
+<!--     <MenuOption ref="RETURN::TENDER_STORE_CREDIT_CARD.ISSUE" />
+    <MenuOption ref="RETURN::TENDER_STORE_CREDIT_CARD.RELOAD" /> -->
+    <!--  MenuOption ref="RETURN::TENDER_GIFT_CERTIFICATE.ISSUE" />
+    <MenuOption ref="RETURN::TENDER_GIFT_CARD.ISSUE" />
+    <MenuOption ref="RETURN::TENDER_GIFT_CARD.RELOAD" />-->
+    <MenuOption ref="RETURN::TENDER_HOME_OFFICE_CHECK" />
+    <MenuOption ref="RETURN::TENDER_HOUSE_ACCOUNT" />
+  <!--  <MenuOption ref="RETURN::TENDER_ROOM_CHARGE" />
+    <MenuOption ref="RETURN::TENDER_MISCELLANEOUS" />-->
+    
+    <SubMenu actionRef="RETURN::MENU.MODIFY_TENDER">
+      <MenuOption ref="RETURN::CHANGE_TENDER_AMOUNT" />
+      <MenuOption ref="RETURN::VOID_TENDER" />
+    </SubMenu>
+
+    <MenuOption ref="RETURN::BACK_TO_SALE" />
+    <MenuOption ref="RETAIL::CHECK_SALE_COMPLETE" />
+    <MenuOption ref="RETURN::TENDER_CUSTOMER_NOT_PRESENT_CREDIT_CARD" />
+  </MenuItem>
+  <!-- *****************************************************************************************
+       *****************************************************************************************
+       SALE
+       These menus contain items pertaining to the Sale of merchandise
+       *****************************************************************************************
+       ***************************************************************************************** -->
+  <MenuItem name="SALE" text="_menuSale" category="Retail" keywords="universal,sale,register_extended,register_all">
+    <MenuOption ref="RETURN" />
+
+    <SubMenu actionRef="RETAIL::MENU.MODIFY_LINE" sticky="false">
+      <MenuOptions ref="RETAIL::CHANGE_LINE" />
+      <MenuOption ref="RETAIL::ADD_LINE_COMMENT" />
+      <MenuOption ref="XSTOREM::REMOVE_COMMENT" />
+    </SubMenu>
+
+    <SubMenu ref="RETAIL::ADD_DISCOUNT" />
+
+    <SubMenu actionRef="SALE::MENU.ADD_NON_PHYSICAL" sticky="false" displayType="LIST">
+      <MenuOption ref="SALE::ADD_NON_PHYSICAL" />
+      <MenuOption ref="SALE::ADD_GIFT_CARD" />
+      <MenuOption ref="SALE::ADD_GIFT_CERTIFICATE" />
+    </SubMenu>
+
+    <!-- <MenuOption ref="SALE::SELECT_GIFT_RECEIPTS" /> -->
+
+    <SubMenu ref="RETAIL::EXTENDED_TRANS" />
+
+    <SubMenu ref="RETAIL::REGISTER_OPTIONS" />
+
+    <SubMenu ref="RETAIL::CUSTOMER_OPTIONS" sticky="false" />
+
+    <MenuOption ref="REGISTER::VIEW_ITEM_DETAILS" />
+
+    <SubMenu text="_itemFind" keyStroke="F9" sticky="false">
+      <MenuOption ref="SALE::PRICE_INQUIRY" />
+      <MenuOption ref="SALE::SEARCH_FOR_ITEM" />
+      <MenuOption ref="RETAIL::INVENTORY_LOCATOR" keyStroke="F10" />
+      <MenuOption ref="SALE::GS1.MANUAL_ENTRY" keyStroke="F11" />
+    </SubMenu>
+    
+    <MenuOption>
+      <Action ref="RETAIL::COMPLETE.TO_TENDERING" />
+      <Action ref="RETAIL::COMPLETE.NO_TENDERING" />
+    </MenuOption>
+    
+    <MenuOption>
+      <Action ref="RETAIL::SUSPEND_TRANSACTION" />
+      <Action ref="RETAIL::RESUME_TRANSACTION" />
+    </MenuOption>
+  </MenuItem>
+  
+</MenuSet>

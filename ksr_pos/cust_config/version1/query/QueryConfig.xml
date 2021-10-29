@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuerySet xmlns="http://micros.com/xstore/config/query" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../config-objects/schema/QueryConfig.xsd">
+ <Queries>
+
+<Query name="GET_CUST_DETAILS" pmType="CODES" >
+    <QueryHandler dtype="Class">dtv.data2.access.query.SqlQueryHandler</QueryHandler>
+    <ResultClass  dtype="Class">dtv.data2.access.DefaultQueryResult</ResultClass>
+    <ResultField  name="propertyCode" type="String" />
+    <ResultField  name="stringValue" type="String" />
+    <SQL>
+      <Statement dtype="String"><![CDATA[
+        SELECT property_code,string_value
+        	FROM crm_party_p 
+        	WHERE party_id=?
+        	AND organization_id=?
+           ]]></Statement>     
+     <Parameter name="argPartyId" />
+     <Parameter name="argOrganizationId" />
+    </SQL>
+  </Query>
+ 
+ </Queries>
+ </QuerySet>

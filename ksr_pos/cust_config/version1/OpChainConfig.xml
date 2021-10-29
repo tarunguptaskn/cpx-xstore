@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpChainSet xmlns="http://micros.com/xstore/config/opchain">
+
+
+<OpChain name="PRE_TENDERING">
+    <ValidationOp validationsBean="orderMixingRules" />
+    <ValidationOp validationsBean="amountDueRules" />
+    <ValidationOp class="dtv.pos.register.returns.ValidateBlindReturnsAmountOp" validationsBean="returnBlindAmountRules" />
+    <OpChainRoute chainKey="PRE_TENDERING.pre" />
+    <!-- PSE Item check start-->
+    <Op class="ksr.pos.pretender.KsrPreTenderPseItemCheckOp" /> 
+    <Op class="ksr.pos.web.KsrPseControlledItemsOp" />
+    <!-- PSE Item check end-->
+    <OpChainRoute chainKey="CHARITY" />    
+    <!-- Start 183622 -->
+    <Op class="dtv.pos.common.TransactionPropertyPromptOp">
+      <Parameter name="TransactionState" value="PRE_TENDER" />
+    </Op>
+    <Op class="dtv.pos.common.TransactionPropertyCreateTransactionOp" />
+    <!-- End 183622 -->
+    <PromptOp class="dtv.pos.util.crypto.NagAboutBadEncryptionOp" />
+    <OpChainRoute chainKey="PRE_TENDERING.CUSTOMER_CHECK" />
+    <OpChainRoute chainKey="PRE_TENDERING.1" />
+    <OpChainRoute chainKey="PRE_TENDERING.2" /> <!-- This additional hook can be helpful for supporting fiscal printers -->
+    <OpChainRoute chainKey="PRE_TENDERING.3" />
+    <OpChainRoute chainKey="PRE_TENDERING.invoice" />
+    <OpChainRoute chainKey="REFUND_ORIG_CREDIT_CARD_TENDER" condition="dtv.pos.tender.check.RefundToOrigCreditCardCondition" />
+    <Op class="dtv.pos.hardware.op.SubtotalCustomerDisplayOp" />
+    <OpChainRoute chainKey="PRE_TENDERING.post" />
+    <OpChainRoute>
+      <Choice chainKey="CHECK_SALE_COMPLETE_REFUND_ORIG_CREDIT_CARD" chainType="START" condition="dtv.pos.register.condition.AnyRefundedOriginalCreditCardRunCondition" />
+      <Choice chainKey="CHECK_SALE_COMPLETE" chainType="START" />
+    </OpChainRoute>    
+  </OpChain>
+    
+
+
+   <OpChain name="SECURITY_AUTHENTICATE">
+    <Op class="dtv.pos.hardware.biometric.fingerprint.op.EnableFingerprintReaderIdentityOp" />
+    <!-- For displaying login disclaimer text -->
+    <Op class="ksr.pos.disclaimer.KsrDisclaimerInfoOp" />
+    <OpChainRoute>
+      <Choice chainKey="SECURITY_AUTHENTICATE_BY_PROMPT" condition="dtv.pos.framework.security.ShowUserIdAndPasswordAsPromptsCondition" />
+      <Choice chainKey="SECURITY_AUTHENTICATE_BY_FORM" />
+    </OpChainRoute>
+    <Op class="dtv.pos.security.op.AuthenticateUserOp" />
+    <PromptOp class="dtv.pos.security.op.ForcePasswordChangeOp" />
+    <PromptOp class="dtv.pos.security.op.NotifyBadAuthenticationOp" />
+  </OpChain>
+  
+  <OpChain name="CUSTOMER_MAINTENANCE" rollbackLevel="40">
+    <Op class="ksr.pos.customer.KsrCustomerSearchOp" required="true" breakpoint="true">
+      <Parameter name="RESULTS_PROMPT" value="CUSTOMER_LIST" />
+      <Parameter name="PrimaryOnly" value="true" />
+      <Parameter name="AddCustomerChain" value="CREATE_CUSTOMER_FROM_SEARCH" />
+      <Parameter name="EditCustomerChain" value="CUSTOMER_MAINTENANCE_EDIT" />
+      <Parameter name="AlwaysViewCustomer" value="true" />
+    </Op>
+  </OpChain>
+  
+  <OpChain name="CUST_ASSOCIATION" signal="TransactionModified">
+    <Op class="ksr.pos.customer.KsrCustomerSearchOp" required="true" breakpoint="true">
+      <!-- the CustomerSearchOp MUST be the first in the CUST_ASSOCIATION chain
+        so that it can see card swipe events that trigger this chain -->
+      <Parameter name="RESULTS_PROMPT" value="CUSTOMER_LIST_REGISTER" />
+      <Parameter name="PrimaryOnly" value="true" />
+      <Parameter name="AddCustomerChain" value="ADD_NEW_CUST_ASSOC" />
+      <Parameter name="EditCustomerChain" value="CUST_ASSOCIATION_EDIT" />
+    </Op>
+    <OpChainRoute chainKey="CUST_ASSOCIATION_AFTER_LOOKUP" />
+  </OpChain>
+  <OpChain name="ASSOCIATE_TASK_CUSTOMER_SEARCH">
+    <Op class="ksr.pos.customer.KsrCustomerSearchOp" breakpoint="true">
+      <Parameter name="RESULTS_PROMPT" value="CUSTOMER_LIST_REGISTER" />
+      <Parameter name="AddCustomerChain" value="ADD_NEW_CUST_ASSOC" />
+      <Parameter name="EditCustomerChain" value="CUST_ASSOCIATION_EDIT" />
+    </Op>
+  </OpChain>
+  
+  <OpChain name="CUST_ASSOCIATION.NO_TRANS_SALES_PROMPT" signal="TransactionModified">
+    <Op class="ksr.pos.customer.KsrCustomerSearchOp" required="true" breakpoint="true">
+      <!-- the CustomerSearchOp MUST be the first in the CUST_ASSOCIATION chain
+        so that it can see card swipe events that trigger this chain -->
+      <Parameter name="RESULTS_PROMPT" value="CUSTOMER_LIST_REGISTER" />
+      <Parameter name="PrimaryOnly" value="true" />
+      <Parameter name="AddCustomerChain" value="ADD_NEW_CUST_ASSOC" />
+      <Parameter name="EditCustomerChain" value="CUST_ASSOCIATION_EDIT" />
+    </Op>
+    <OpChainRoute chainKey="CUSTOMER.REVIEW_INFORMATION_CONSENT" />
+    <OpChainRoute chainKey="CUST_ASSOCIATION.NO_TRANS_SALES_PROMPT.pre" />
+    <ValidationOp validationsBean="attachCustomerToSaleRules" />
+    <Op class="dtv.pos.customer.AddCustToTransactionNotTaxExemptPromptsOp" />
+    <OpChainRoute chainKey="CUST_ASSOCIATION.NO_TRANS_SALES_PROMPT.post" />
+  </OpChain>
+  
+  <OpChain name="CREATE_CUSTOMER_FROM_SEARCH">
+    <OpChainRoute chainKey="CUSTOMER.REVIEW_INFORMATION_CONSENT" />
+    <Op class="ksr.pos.customer.KsrCreateCustomerFromSearchOp" breakpoint="true" />
+  </OpChain>
+  
+  <OpChain name="ADD_NEW_CUST_ASSOC" signal="TransactionModified">
+    <OpChainRoute chainKey="CUSTOMER.REVIEW_INFORMATION_CONSENT" />
+    <Op class="ksr.pos.customer.KsrCreateCustomerFromSearchOp" breakpoint="true">
+      <Parameter name="AddCustomerToTran" value="true" />
+    </Op>
+  </OpChain>
+  
+  <OpChain name="CUSTOMER_MAINTENANCE_EDIT">
+    <Op class="ksr.pos.customer.KsrEditCustomerOp" breakpoint="true" />
+  </OpChain>
+  <OpChain name="CUST_ASSOCIATION_EDIT">
+    <Op class="ksr.pos.customer.KsrEditCustomerOp" breakpoint="true">
+      <Parameter name="AddCustomerToTran" value="true" />
+    </Op>
+  </OpChain>
+  
+  <OpChain name="VIEW_CUSTOMER_IN_TRANSACTION" signal="TransactionModified">
+    <Op class="ksr.pos.customer.KsrViewTransactionCustomerOp" breakpoint="true" />
+    <Op class="dtv.pos.register.tax.ChangeTaxGroupOnCustomerChangeOp" />
+  </OpChain>
+
+
+</OpChainSet>

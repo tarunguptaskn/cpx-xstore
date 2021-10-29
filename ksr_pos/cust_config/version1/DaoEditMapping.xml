@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DaoEditMappingList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DaoEditMapping.xsd">
+  <DaoEditMapping name="CUSTOMER">
+    <model_name dtype="Translatable">_customerMaintenanceName</model_name>
+    <edit_model_class dtype="Class">ksr.pos.customer.KsrCustomerMaintenanceModel</edit_model_class>
+    <description dtype="Translatable">_customerMaintenanceDescription</description>
+    <data_object_ref dtype="String">PARTY</data_object_ref>
+    <data_object_ref dtype="String">PARTY_LOCALE</data_object_ref>
+  </DaoEditMapping>
+  
+</DaoEditMappingList>

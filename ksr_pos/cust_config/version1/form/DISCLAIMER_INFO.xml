@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- last saved in FormDesigner Wed Mar 10 13:57:57 EST 2004 -->
+<!-- NOTE: THIS CONFIG SHOULD BE MAINTAINED USING dtv.pos.framework.form.design.FormDesigner ANY OTHER EDITS MAY GET LOST -->
+<FormViewSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FormsConfig.xsd">
+  <FormView>
+    <FormKey dtype="String">DISCLAIMER_INFO</FormKey>
+    <FormLocation dtype="String">MESSAGE_AREA</FormLocation>
+    <FormViewPanel>
+      <PanelType dtype="String">DETAIL</PanelType>
+      <FormTabKey dtype="String">DEFAULT</FormTabKey>
+      <Layout dtype="Class">dtv.ui.layout.TableLayout</Layout>
+      <LayoutParameters dtype="ParameterList">
+        <Parameter name="setColumn">
+          <!--PREFERRED, PREFERRED, PREFERRED, PREFERRED, PREFERRED-->
+          <param_value dtype="DoubleArray">-2.0, -2.0, -1.0</param_value>
+        </Parameter>
+        <Parameter name="setRow">
+          <!--PREFERRED, PREFERRED, PREFERRED,  PREFERRED, PREFERRED, PREFERRED, PREFERRED, PREFERRED, PREFERRED,  PREFERRED, PREFERRED, PREFERRED, PREFERRED-->
+          <param_value dtype="DoubleArray">-2.0, -2.0, -2.0, -2.0, -2.0, -1.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0,
+            -2.0, -2.0, -2.0</param_value>
+        </Parameter>
+        <Parameter name="setVerticalStretch">
+          <param_value dtype="Boolean">true</param_value>
+        </Parameter>
+      </LayoutParameters>
+      <FormViewCell>
+        <LayoutLocation dtype="String">0, 0, 1, 1, F, F</LayoutLocation>
+        <Type dtype="String">FormLabel</Type>
+		<TextKey dtype="Translatable">_disclaimerHeader</TextKey>
+        <Font fontStyle="BOLD" fontSize="+10"/>
+      </FormViewCell>
+      <FormViewCell>
+        <LayoutLocation dtype="String">0, 2, 1, 1, F, F</LayoutLocation>
+        <Type dtype="String">FormLabel</Type>
+        <TextKey dtype="Translatable">_disclaimertext1</TextKey>
+        <Font fontStyle="BOLD" fontSize="+6"/>
+      </FormViewCell>
+      <FormViewCell>
+        <LayoutLocation dtype="String">0, 4, 1, 1, F, F</LayoutLocation>
+        <Type dtype="String">FormLabel</Type>
+        <TextKey dtype="Translatable">_disclaimertext2</TextKey>
+        <Font fontStyle="BOLD" fontSize="+6"/>
+      </FormViewCell>
+    </FormViewPanel>
+  </FormView>
+</FormViewSet>

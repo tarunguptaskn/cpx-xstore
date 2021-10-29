@@ -1,0 +1,25 @@
+**LOG BEGUN     2021-08-25 12:53:32,331
+loading D:Kaiserkaiser_v20kaiser-v20ksr_poscust_configlog4j2.xml
+ ERROR [      ] 2021-08-25 12:53:32,280 CAUGHT EXCEPTION with D:\Kaiser\kaiser_v20\kaiser-v20\ksr_pos\res\keys\ccenc.2020-01-01.cip :: dtv.util.crypto.DtvCipherSet [main]
+dtv.util.crypto.SecretKeyCipherStoreException: javax.crypto.BadPaddingException: Given final block not properly padded. Such issues can arise if a bad key is used during decryption.
+	at dtv.util.crypto.AbstractDtvCipherVersion.makeElement(AbstractDtvCipherVersion.java:129) ~[dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.AbstractDtvCipherVersion.makeElement(AbstractDtvCipherVersion.java:92) ~[dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.DtvCipherSet.make(DtvCipherSet.java:97) ~[dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.DtvCipherSet.loadCiphers(DtvCipherSet.java:298) [dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.DtvCipherSet.loadStoredCiphers(DtvCipherSet.java:61) [dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.SecretKeyCipherManager.loadStoredCiphers(SecretKeyCipherManager.java:281) [dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.SecretKeyCipherManager.getCipherReport(SecretKeyCipherManager.java:179) [dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.SecretKeyCipherManager.getCipherReport(SecretKeyCipherManager.java:153) [dtv-util.jar:20.0.1.0.40]
+	at dtv.crypto.generate.SecretKeyCipherGenerator.showReport(SecretKeyCipherGenerator.java:301) [dtv-crypto-generate.jar:20.0.1.0.40]
+	at dtv.crypto.generate.SecretKeyCipherGenerator.handleAll(SecretKeyCipherGenerator.java:282) [dtv-crypto-generate.jar:20.0.1.0.40]
+	at dtv.crypto.generate.SecretKeyCipherGenerator.handle(SecretKeyCipherGenerator.java:264) [dtv-crypto-generate.jar:20.0.1.0.40]
+	at dtv.crypto.generate.SecretKeyCipherGenerator.main(SecretKeyCipherGenerator.java:81) [dtv-crypto-generate.jar:20.0.1.0.40]
+Caused by: javax.crypto.BadPaddingException: Given final block not properly padded. Such issues can arise if a bad key is used during decryption.
+	at com.sun.crypto.provider.CipherCore.unpad(CipherCore.java:975) ~[?:?]
+	at com.sun.crypto.provider.CipherCore.fillOutputBuffer(CipherCore.java:1056) ~[?:?]
+	at com.sun.crypto.provider.CipherCore.doFinal(CipherCore.java:853) ~[?:?]
+	at com.sun.crypto.provider.AESCipher.engineDoFinal(AESCipher.java:446) ~[?:?]
+	at javax.crypto.Cipher.doFinal(Cipher.java:2202) ~[?:?]
+	at dtv.util.crypto.DtvCipherVersion4.decryptKeyInfo(DtvCipherVersion4.java:56) ~[dtv-util.jar:20.0.1.0.40]
+	at dtv.util.crypto.AbstractDtvCipherVersion.makeElement(AbstractDtvCipherVersion.java:113) ~[dtv-util.jar:20.0.1.0.40]
+	... 11 more

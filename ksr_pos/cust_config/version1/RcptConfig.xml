@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReceiptDefinitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="RcptConfig.xsd">
+
+  <ReceiptCopyRules>
+      <ReceiptCopyRule name="ASSOCIATE_ADVANCE" document="ASSOCIATE_ADVANCE" copies="2">
+      <!--  Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TenderControlTransTypeRule" type="ASSOCIATE_ADVANCE" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="ATTACH_REMOVE_TILL" document="ATTACH_REMOVE_TILL">
+      <!-- Rule class="dtv.pos.hardware.rcptbuilding.copyrules.AttachRemoveDrawerRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="ATTACH_REMOVE_TILL" document="ATTACH_REMOVE_TILL">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.AttachRemoveDrawerRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="NO_SALE" document="NO_SALE">
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TransactionTypeRule" type="NO_SALE" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" />
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="VALIDATE_CLOCKOUT" document="VALIDATE_CLOCKOUT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.ValidateClockOutCopyRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="PRESALE_ACCOUNT" document="PRESALE_ACCOUNT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.ConfigurableCustAcctTypeRule" type="PRESALE" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="PRESALE_ACCOUNT_MAIN_STORE" document="PRESALE_ACCOUNT_MAIN_STORE">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.ConfigurableCustAcctTypeRule" type="PRESALE" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="ONHOLD_ACCOUNT" document="ONHOLD_ACCOUNT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.ConfigurableCustAcctTypeRule" type="ONHOLD" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="ONHOLD_ACCOUNT_MAIN_STORE" document="ONHOLD_ACCOUNT_MAIN_STORE">
+     <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.ConfigurableCustAcctTypeRule" type="ONHOLD" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="ISSUE_STORE_CREDITISSUED" document="ISSUE_STORE_CREDITISSUED">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.HasTenderIdRule" type="ISSUE_STORE_CREDIT" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" /-->
+    </ReceiptCopyRule>
+    <!-- cash count (begin count, cash pickup) -->
+    <ReceiptCopyRule name="CASH_COUNT" document="CASH_COUNT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CashCountRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="PAID_IN" document="PAID_IN">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TenderControlTransTypeRule" type="PAID_IN" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" /-->
+    </ReceiptCopyRule>
+    <!-- paid out -->
+    <ReceiptCopyRule name="PAID_OUT" document="PAID_OUT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TenderControlTransTypeRule" type="PAID_OUT" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="TENDER_EXCHANGE" document="CUSTOMER_TENDER_EXCHANGE">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TenderControlTransTypeRule" type="TENDER_EXCHANGE" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="MID_COUNT" document="MID_COUNT">
+     <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.MidCountRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="TILL_END_COUNT" document="TILL_END_COUNT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TillEndCountRule" /-->
+    </ReceiptCopyRule>
+        <!-- store safe deposit slip -->
+    <ReceiptCopyRule name="DEPOSIT_SLIP" document="DEPOSIT_SLIP" additive="true">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.DepositSlipCopyRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="SYSTEM_CYCLE" document="SYSTEM_CYCLE">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.OpenCloseRule" /-->
+    </ReceiptCopyRule>
+    <!-- assign drawer -->
+    <ReceiptCopyRule name="ISSUE_TILL" document="ISSUE_TILL">
+     <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TenderControlTransTypeRule" type="ISSUE_TILL_STARTING_CASH" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="POSTVOID" document="POSTVOID">
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TransactionTypeRule" type="POST_VOID" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" />
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="TRAINING_MODE_ENTRY" document="TRAINING_MODE_ENTRY">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TransactionTypeRule" type="TRAINING_MODE_ENTRY" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="TRAINING_MODE_EXIT" document="TRAINING_MODE_EXIT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TransactionTypeRule" type="TRAINING_MODE_EXIT" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.NoCanceledTransactionRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="EMPLOYEE_SCHEDULE" document="EMPLOYEE_SCHEDULE_RECEIPT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.SchedulePrintRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="ISSUE_BOUNCE_BACK_COUPON" document="ISSUE_BOUNCE_BACK_COUPON">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.HasIssuedBounceBackCouponRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="GENERIC_REBATE_RECEIPT" document="GENERIC_REBATE_RECEIPT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.DocumentReceiptTypeRule" type="GENERIC_REBATE_RECEIPT" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="REBATE_COPY" document="REBATE">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.IsInstanceCopyRule" value="dtv.pos.register.rebate.RebateSource" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="INVENTORY_LOCATION_SUMMARY_COUNT" document="INVENTORY_LOCATION_SUMMARY_COUNT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TransactionTypeRule" type="INVENTORY_SUMMARY_COUNT" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="GIFT_RECEIPTS" document="GIFT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.IsInstanceCopyRule" value="dtv.pos.register.giftreceipt.GiftReceiptDataList" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="RAIN_CHECK" document="RAIN_CHECK">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TransactionTypeRule" type="RAIN_CHECK" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="LOYALTY_BALANCE_INQUIRY" document="LOYALTY_BALANCE_INQUIRY">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.IsInstanceCopyRule" value="dtv.xst.dao.cat.ICustomerLoyaltyCard" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="LOYALTY_HISTORY_INQUIRY" document="LOYALTY_HISTORY_INQUIRY">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.IsInstanceCopyRule" value="dtv.pos.customer.CustomerMaintenanceModel" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="EXCHANGE_RATE_TRANS" document="EXCHANGE_RATE_TRANS">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.TransactionTypeRule" type="EXCHANGE_RATE" /-->
+    </ReceiptCopyRule>
+	<ReceiptCopyRule name="SEND_SALE_ACCOUNT" document="SEND_SALE_ACCOUNT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountTypeRule" type="SEND_SALE" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountAnyNonVoidedItemsRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="SEND_SALE_MAIN_STORE" document="SEND_SALE_MAIN_STORE">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountTypeRule" type="SEND_SALE" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountAnyNonVoidedItemsRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="SEND_SALE_MERCH_TICKET" document="SEND_SALE_MERCH_TICKET">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountTypeRule" type="SEND_SALE" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerItemAccountCanceledRule" inverted="true" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.DeliveryModifierNullRule" inverted="true" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.PrintSendSaleMerchandiseTicketPerItemRule" inverted="true" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountAnyNonVoidedItemsRule" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="SEND_SALE_MERCH_TICKET_PER_ITEM" document="SEND_SALE_MERCH_TICKET_PER_ITEM">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountTypeRule" type="SEND_SALE" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerItemAccountCanceledRule" inverted="true" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.DeliveryModifierNullRule" inverted="true" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.PrintSendSaleMerchandiseTicketPerItemRule" />
+      <Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountAnyNonVoidedItemsRule" /-->
+    </ReceiptCopyRule>
+	    <!-- ensure a customer copy for special order accounts -->
+    <ReceiptCopyRule name="SP_ORDER_ACCOUNT" document="SP_ORDER_ACCOUNT">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountTypeRule" type="SPECIAL_ORDER" /-->
+    </ReceiptCopyRule>
+    <ReceiptCopyRule name="SP_ORDER_MAIN_STORE" document="SP_ORDER_MAIN_STORE">
+      <!--Rule class="dtv.pos.hardware.rcptbuilding.copyrules.CustomerAccountTypeRule" type="SPECIAL_ORDER" /-->
+    </ReceiptCopyRule>
+  </ReceiptCopyRules>
+
+  <receipts>
+  </receipts>
+
+  <sections>
+  </sections>
+
+</ReceiptDefinitions>

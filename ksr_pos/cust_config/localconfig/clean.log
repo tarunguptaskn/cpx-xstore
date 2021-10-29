@@ -1,0 +1,31 @@
+drop user KSR_repqueue_20_102 cascade
+          *
+ERROR at line 1:
+ORA-01918: user 'KSR_REPQUEUE_20_102' does not exist 
+
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+old  11:   execute immediate 'DROP TABLESPACE &dbDataTableSpace. INCLUDING CONTENTS AND DATAFILES';
+new  11:   execute immediate 'DROP TABLESPACE KSR_repqueue_20_102_DATA INCLUDING CONTENTS AND DATAFILES';
+old  13:                      lower('&dbDataTableSpace..dbf'),
+new  13:                      lower('KSR_repqueue_20_102_DATA.dbf'),
+old  20:      utl_file.fremove('EXT_DATA_FILES', '&dbDataTableSpace..dbf');
+new  20:      utl_file.fremove('EXT_DATA_FILES', 'KSR_repqueue_20_102_DATA.dbf');
+old  23:   execute immediate 'DROP TABLESPACE &dbIndexTableSpace. INCLUDING CONTENTS AND DATAFILES';
+new  23:   execute immediate 'DROP TABLESPACE KSR_repqueue_20_102_INDEX INCLUDING CONTENTS AND DATAFILES';
+old  25:                      lower('&dbIndexTableSpace..dbf'),
+new  25:                      lower('KSR_repqueue_20_102_INDEX.dbf'),
+old  32:      utl_file.fremove('EXT_DATA_FILES', '&dbIndexTableSpace..dbf');
+new  32:      utl_file.fremove('EXT_DATA_FILES', 'KSR_repqueue_20_102_INDEX.dbf');
+DECLARE
+*
+ERROR at line 1:
+ORA-00959: tablespace 'KSR_REPQUEUE_20_102_DATA' does not exist 
+ORA-06512: at line 11 
+
+
