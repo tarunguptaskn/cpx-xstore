@@ -264,8 +264,7 @@
   <!-- copy the installx jar to the ixwork dir (this will create that dir if it doesn't exist) -->
   <local name="ixwork.installx.jar.file" />
   <property name="ixwork.installx.jar.file" location="${ixwork}/installx.jar" />
-    <copy todir="${ixwork}" file="${installx.jar.file}" overwrite="true" />
-    <!--copy tofile="${ixwork.installx.jar.file}" file="${installx.jar.file}" overwrite="true" /-->
+    <copy tofile="${ixwork.installx.jar.file}" file="${installx.jar.file}" overwrite="true" />
     <!-- copy the ant.install.properties file -->
     <copy file="${builder.ant.install.properties.file}" tofile="${ixwork}/ant.install.properties" overwrite="true" />
     <!-- execute installx builder -->
