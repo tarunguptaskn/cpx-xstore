@@ -1,0 +1,2 @@
+release/installx-20.0.1.0.40.jar filter=lfs diff=lfs merge=lfs -text
+release/javadoc/javadoc.jar filter=lfs diff=lfs merge=lfs -text
